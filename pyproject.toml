@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "servcontrol-bot"
+version = "0.1.0"
+description = ""
+authors = ["Serg <ser5olovjew@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "servcontrol_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.89.1"
+aiogram = "^2.24"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+sqlalchemy = "^1.4.46"
+alembic = "^1.9.2"
+asyncpg = "^0.27.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
