@@ -7,6 +7,7 @@ from app.bot.keyboard import (create_acception_keyboard,
 from app.bot.states import ClientMenu
 from app.bot.utils import validate
 from app.core.config import bot
+from app.core.constants import UserRoleConstant
 from app.core.db.repository import user_service
 
 
@@ -120,7 +121,21 @@ async def data_reconciliation(message: types.Message, state: FSMContext):
 async def user_registration(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     user_data = await state.get_data()
+    moderators = await user_service.get_users_telegram_ids_by_role(
+        role_id=UserRoleConstant.MODERATOR.value
+    )
     await user_service.create_object(user_data)
+    for moderator in moderators:
+        await bot.send_message(
+            moderator,
+            (
+                "<i><b>Зарегистрировался новый пользователь.</b>\n\n"
+                f"Инженер {user_data.get('first_name')} "
+                f"{user_data.get('last_name')} из города "
+                f"{user_data.get('town')}</i>"
+            ),
+            parse_mode=types.ParseMode.HTML
+        )
     await state.finish()
     return await main_client_menu(call, state)
 
