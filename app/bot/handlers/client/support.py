@@ -213,7 +213,7 @@ async def exit_support(
             await second_state.reset_state()
             await bot.send_message(
                 user_id,
-                "<i>Ползователь завершил сеанс техподдержки.</i>",
+                "<i>Пользователь завершил сеанс техподдержки.</i>",
                 parse_mode=types.ParseMode.HTML,
             )
     await call.message.edit_text(
