@@ -5,7 +5,7 @@ from aiogram.utils.callback_data import CallbackData
 
 from app.core.config import dp
 from app.core.constants import UserRoleConstant
-from app.core.db.repository import category_service, user_service
+from app.core.db.repository import user_service
 
 users_callback = CallbackData("users", "role_name", "role_id", "is_banned")
 documents_callback = CallbackData(
@@ -75,11 +75,10 @@ def create_registration_keyboard():
     return keyboard
 
 
-async def create_category_keyboard():
-    document_types = await category_service.get_all_objects()
+async def create_category_keyboard(categories: list):
     keqyboard = InlineKeyboardMarkup(row_width=2)
     buttons = []
-    for category in document_types:
+    for category in categories:
         buttons.append(
             InlineKeyboardButton(
                 text=category.name,

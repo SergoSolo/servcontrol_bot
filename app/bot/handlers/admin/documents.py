@@ -4,15 +4,16 @@ from aiogram.dispatcher import FSMContext
 from app.bot.keyboard import create_category_keyboard, create_options_keyboard
 from app.bot.states import AdminMenu
 from app.core.config import bot
-from app.core.db.repository import document_service
+from app.core.db.repository import category_service, document_service
 
 
 async def select_documents_option(
     call: types.CallbackQuery, state: FSMContext
 ):
+    categories = await category_service.get_all_objects()
     await call.message.edit_text(
         "<i>Выберите категорию файлов с которой хотите работать.</i>",
-        reply_markup=await create_category_keyboard(),
+        reply_markup=await create_category_keyboard(categories),
         parse_mode=types.ParseMode.HTML,
     )
     await state.set_state(AdminMenu.selected_documents_options.state)
