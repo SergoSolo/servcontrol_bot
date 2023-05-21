@@ -1,6 +1,7 @@
 import logging
 
-from aiogram import Bot
+from aiogram import Bot, Dispatcher
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from pydantic import BaseSettings
 
 
@@ -37,3 +38,5 @@ def logger_config():
 
 settings = Settings()
 bot = Bot(token=settings.BOT_TOKEN)
+storage = MemoryStorage()
+dp = Dispatcher(bot, storage=storage)

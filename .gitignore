@@ -7,7 +7,7 @@
 ### direnv ###
 .direnv
 .envrc
-
+.env
 ### Django ###
 *.log
 *.pot
