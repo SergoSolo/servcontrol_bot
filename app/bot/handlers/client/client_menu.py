@@ -104,7 +104,7 @@ async def data_reconciliation(message: types.Message, state: FSMContext):
             (
                 f"<i>Давайте сверимся.\nФИО: {user_data.get('first_name')} "
                 f"{user_data.get('last_name')}\nГород: "
-                "{user_data.get('town')}\nВсе верно?</i>"
+                f"{user_data.get('town')}\nВсе верно?</i>"
             ),
             parse_mode=types.ParseMode.HTML,
             reply_markup=create_acception_keyboard(),
