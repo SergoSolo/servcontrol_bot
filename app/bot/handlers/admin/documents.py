@@ -96,4 +96,3 @@ async def add_document(message: types.Message, state: FSMContext):
         (f"<i>Файл {message.document.file_name.split('.')[0]} добавлен.</i>"),
         parse_mode=types.ParseMode.HTML,
     )
-    # await state.finish()

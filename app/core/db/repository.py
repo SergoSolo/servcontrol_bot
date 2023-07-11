@@ -5,6 +5,8 @@ from app.core.db.models import Category, Document, User
 
 
 class CRUDBase:
+    """Базовый класс для работы с моделями."""
+
     def __init__(self, model) -> None:
         self.model = model
         self.session = AsyncSessionLocal()
@@ -21,7 +23,7 @@ class CRUDBase:
             db_objects = await session.execute(select(self.model))
             return db_objects.scalars().all()
 
-    async def create_object(self, data):
+    async def create_object(self, data: dict):
         async with self.session as session:
             object = self.model(**data)
             session.add(object)
@@ -51,6 +53,8 @@ class CRUDBase:
 
 
 class UserCRUD(CRUDBase):
+    """Класс для работы с моделью пользователя."""
+
     async def get_users_telegram_ids_by_role(self, role_id: int):
         async with self.session as session:
             db_objects = await session.execute(
@@ -81,7 +85,9 @@ class UserCRUD(CRUDBase):
 
 
 class DocumentCRUD(CRUDBase):
-    async def get_all_documents_by_type(self, type_id):
+    """Класс для работы с моделью документов."""
+
+    async def get_all_documents_by_type(self, type_id: int):
         async with self.session as session:
             db_objects = await session.execute(
                 select(self.model).where(self.model.category_id == type_id)
@@ -99,6 +105,8 @@ class DocumentCRUD(CRUDBase):
 
 
 class CategoryCRUD(CRUDBase):
+    """Класс для работы с моделью категорий."""
+
     pass
 
 

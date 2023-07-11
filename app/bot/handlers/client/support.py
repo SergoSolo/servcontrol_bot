@@ -120,11 +120,9 @@ async def start_dailog_support(
         role_id=UserRoleConstant.MODERATOR.value
     )
     support_id = await get_support_manager(support_ids)
-    # keyboard_second_user = cancel_support(user_id=call.from_user.id)
     await call.message.edit_text(
         "<i>Вы обратились к сотруднику ТП. Ждем ответа от ТП.</i>",
         parse_mode=types.ParseMode.HTML
-        # reply_markup=keyboard_second_user,
     )
     user_id = int(callback_data.get("user_id"))
     if not await check_support_available(user_id):
@@ -170,7 +168,6 @@ async def answer_support_call(
     await user_state.set_state(Support.in_support.state)
     await state.update_data(second_id=second_id)
     keyboard = cancel_support(user_id=second_id)
-    # keyboard_second_user = cancel_support(user_id=call.from_user.id)
     await call.message.edit_text(
         (
             "<i>Вы на связи с пользователем. "
@@ -182,7 +179,6 @@ async def answer_support_call(
     await bot.send_message(
         second_id,
         "<i>Оператор включился в разговор. Задайте свои вопросы.</i>",
-        # reply_markup=keyboard_second_user,
         parse_mode=types.ParseMode.HTML,
     )
 

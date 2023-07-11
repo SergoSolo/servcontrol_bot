@@ -1,24 +1,37 @@
 from aiogram import types
 from aiogram.dispatcher import Dispatcher
 
-from app.bot.handlers.client.client_menu import (client_input_first_name,
-                                                 client_input_last_name,
-                                                 client_input_town,
-                                                 data_reconciliation,
-                                                 main_client_menu,
-                                                 restart_user_registration,
-                                                 user_registration)
-from app.bot.handlers.client.documents import (files_command,
-                                               get_all_documents_from_page,
-                                               get_certain_files, get_one_file)
+from app.bot.handlers.client.client_menu import (
+    client_input_first_name,
+    client_input_last_name,
+    client_input_town,
+    data_reconciliation,
+    main_client_menu,
+    restart_user_registration,
+    user_registration,
+)
+from app.bot.handlers.client.documents import (
+    files_command,
+    get_all_documents_from_page,
+    get_certain_files,
+    get_one_file,
+)
 from app.bot.handlers.client.info import help_command
-from app.bot.handlers.client.support import (answer_support_call, exit_support,
-                                             get_support_message,
-                                             not_supported, send_to_support,
-                                             start_dailog_support, support,
-                                             support_call)
-from app.bot.keyboard import (cancel_support_callback, documents_callback,
-                              support_callback)
+from app.bot.handlers.client.support import (
+    answer_support_call,
+    exit_support,
+    get_support_message,
+    not_supported,
+    send_to_support,
+    start_dailog_support,
+    support,
+    support_call,
+)
+from app.bot.keyboard import (
+    cancel_support_callback,
+    documents_callback,
+    support_callback,
+)
 from app.bot.states import AdminMenu, ClientMenu, Support
 
 

@@ -1,10 +1,8 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from app.bot.keyboard import (
-    create_admin_keyboard,
-    create_registration_keyboard,
-)
+from app.bot.keyboard import (create_admin_keyboard,
+                              create_registration_keyboard)
 from app.bot.states import AdminMenu
 from app.core.config import bot
 from app.core.constants import UserRoleConstant
@@ -53,4 +51,3 @@ async def admin_menu(message: types.Message, state: FSMContext):
 
 async def cancel_option(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
-    await state.finish()

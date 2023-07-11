@@ -2,12 +2,18 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 
 from app.bot.handlers.pagination_handler import pagination_objects
-from app.bot.keyboard import (create_cancel_keyboard, create_category_keyboard,
-                              create_registration_keyboard)
+from app.bot.keyboard import (
+    create_cancel_keyboard,
+    create_category_keyboard,
+    create_registration_keyboard,
+)
 from app.bot.states import ClientMenu
 from app.core.config import bot
-from app.core.db.repository import (category_service, document_service,
-                                    user_service)
+from app.core.db.repository import (
+    category_service,
+    document_service,
+    user_service,
+)
 
 
 async def files_command(message: types.Message, state: FSMContext):

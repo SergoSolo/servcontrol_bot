@@ -1,8 +1,10 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from app.bot.keyboard import (create_users_keyboard,
-                              create_users_option_keyboard)
+from app.bot.keyboard import (
+    create_users_keyboard,
+    create_users_option_keyboard,
+)
 from app.bot.states import AdminMenu
 from app.core.constants import UserRoleConstant
 from app.core.db.repository import user_service
@@ -40,7 +42,7 @@ async def users_options(call: types.CallbackQuery, state: FSMContext):
             reply_markup=create_users_option_keyboard(
                 call.data, data.get("current_user_role")
             ),
-            parse_mode=types.ParseMode.HTML
+            parse_mode=types.ParseMode.HTML,
         )
         await state.set_state(AdminMenu.select_user_work_options.state)
 

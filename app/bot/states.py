@@ -2,6 +2,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
 class AdminMenu(StatesGroup):
+    """Состояния администратора."""
     select_main_options = State()
     selected_users_options = State()
     select_user_work_options = State()
@@ -16,6 +17,7 @@ class AdminMenu(StatesGroup):
 
 
 class ClientMenu(StatesGroup):
+    """Состояния пользователя."""
     select_main_options = State()
     select_documents = State()
     select = State()
@@ -32,6 +34,7 @@ class ClientMenu(StatesGroup):
 
 
 class Support(StatesGroup):
+    """Состояния тех.поддержки."""
     support_command = State()
     wait_for_support = State()
     in_support = State()

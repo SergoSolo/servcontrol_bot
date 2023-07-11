@@ -1,9 +1,11 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from app.bot.keyboard import (create_acception_keyboard,
-                              create_cancel_keyboard,
-                              create_registration_keyboard)
+from app.bot.keyboard import (
+    create_acception_keyboard,
+    create_cancel_keyboard,
+    create_registration_keyboard,
+)
 from app.bot.states import ClientMenu
 from app.bot.utils import validate
 from app.core.config import bot
@@ -134,7 +136,7 @@ async def user_registration(call: types.CallbackQuery, state: FSMContext):
                 f"{user_data.get('last_name')} из города "
                 f"{user_data.get('town')}</i>"
             ),
-            parse_mode=types.ParseMode.HTML
+            parse_mode=types.ParseMode.HTML,
         )
     await state.finish()
     return await main_client_menu(call, state)
