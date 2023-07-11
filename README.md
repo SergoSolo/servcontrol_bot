@@ -74,6 +74,7 @@ serv_db             "docker-entrypoint.s…"   db                  running      
 ```
 docker-compose down
 ```
+</details>
 
 ##  Используемые технологии:
 - Python version 3.10
